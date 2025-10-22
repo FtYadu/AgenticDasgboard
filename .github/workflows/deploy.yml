@@ -1,0 +1,25 @@
+name: deploy-webuzo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare SSH key
+        run: |
+          echo "${{ secrets.SSH_KEY_B64 }}" | base64 -d > key
+          chmod 600 key
+      - name: Deploy
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+        run: |
+          ssh -o StrictHostKeyChecking=no -i key -p "${SSH_PORT}" "${SSH_USER}@${SSH_HOST}" '~/appstack/deploy.sh'
+      - name: Cleanup
+        if: always()
+        run: rm -f key

@@ -1,0 +1,29 @@
+{
+  "name": "@agentic/cms",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "lint": "eslint ./src --ext .js"
+  },
+  "dependencies": {
+    "@strapi/strapi": "4.25.3",
+    "@strapi/plugin-i18n": "4.25.3",
+    "@strapi/plugin-users-permissions": "4.25.3",
+    "@strapi/provider-upload-aws-s3": "4.25.3",
+    "pg": "8.11.5"
+  },
+  "devDependencies": {
+    "eslint": "8.57.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "strapi": {
+    "name": "agentic-cms",
+    "uuid": "00000000-0000-0000-0000-000000000000"
+  }
+}

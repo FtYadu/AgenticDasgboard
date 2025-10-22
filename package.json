@@ -1,0 +1,15 @@
+{
+  "name": "agentic-dashboard-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@8.15.5",
+  "scripts": {
+    "dev:web": "pnpm --dir apps/web dev",
+    "dev:orchestrator": "pnpm --dir apps/orchestrator dev",
+    "lint": "pnpm -r lint",
+    "smoke": "pnpm exec playwright test -c tests/playwright.config.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.44.1"
+  }
+}
